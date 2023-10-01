@@ -1,8 +1,8 @@
 spring:
   datasource:
-      username: newroot1
+      username: root
       password: root
-      url: jdbc:mysql://${DB_HOST:localhost}:3306/devprofile?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=India
+      url: jdbc:mysql://localhost:3306/profiledev
   jpa:
     hibernate:
       ddl-auto: update
@@ -22,7 +22,7 @@ eureka:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
       serviceUrl:
-        defaultZone: http://localhost:8777/eureka/ 
+        defaultZone: http://localhost:8762/eureka/ 
 customProperty:
   test: manasa
 management:
