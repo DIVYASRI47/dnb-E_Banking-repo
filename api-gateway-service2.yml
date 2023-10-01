@@ -1,0 +1,29 @@
+spring:
+  application:
+      name: api-gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: EDUCATION-SERVICE
+          uri: lb://EDUCATION-SERVICE
+          predicates:
+            - Path=/education/**
+        - id: PROFILE-SERVICE
+          uri: lb://PROFILE-SERVICE
+          predicates:
+            - Path=/profile/**       
+server:
+   port: 9192
+   error:
+    include-message: always
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}} 
+  client:
+      serviceUrl:
+        defaultZone: http://localhost:8762/eureka/ 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
